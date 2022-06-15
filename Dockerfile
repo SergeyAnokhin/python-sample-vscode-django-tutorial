@@ -1,5 +1,6 @@
 # Pull a pre-built alpine docker image with nginx and python3 installed
-FROM tiangolo/uwsgi-nginx:python3.8-alpine-2020-12-19
+FROM python:3.10.5-slim 
+# tiangolo/uwsgi-nginx:python3.8-alpine-2020-12-19
 
 # Set the port on which the app runs; make both values the same.
 #
@@ -37,9 +38,6 @@ RUN chmod g+w /app
 RUN python3 -m pip install -r requirements.txt
 
 ENV DJANGO_SETTINGS_MODULE=web_project.envs.dev_local
-
-# WORKDIR /app
-# ADD . /app
 
 # # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers
